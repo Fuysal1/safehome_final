@@ -100,7 +100,7 @@ class _MainDashboardScreenState extends State<MainDashboardScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        isFalling ? '🚨 DÜŞME ALGILANDI!' : '🛡️ YAŞLI YAKINI GÜVENDE',
+                        isFalling ? '🚨 DÜŞME ALGILANDI!' : '🛡️ YAKININIZ GÜVENDE',
                         style: const TextStyle(fontSize: 26, color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                       if (isFalling) const SizedBox(height: 20),
