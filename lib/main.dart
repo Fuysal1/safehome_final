@@ -5,6 +5,8 @@ import 'ilac_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService.initializeNotifications();
+  await NotificationService.initializeBackgroundService();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
       apiKey: "AIzaSyCx6quwMWto0AKl-UGLrQZDGNAEz_25tkY",
