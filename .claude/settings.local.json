@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r \"minSdkVersion\" \"C:\\\\flutter\\\\packages\\\\flutter_tools\\\\gradle\" 2>/dev/null | head -20)",
+      "Read(//c/flutter/packages/flutter_tools/gradle/**)",
+      "Bash(find C:/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_database-12.4.1/android -type f -name \"*.gradle\" -o -name \"*.gradle.kts\" 2>/dev/null | head -10)",
+      "Read(//c/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_database-12.4.1/android/**)",
+      "Bash(find C:/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/ -maxdepth 1 -name \"awesome_notifications*\" -type d 2>/dev/null | sort)",
+      "Read(//c/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/**)",
+      "Bash(adb devices *)",
+      "PowerShell($adb = \"$env:LOCALAPPDATA\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; & $adb devices)"
+    ]
+  }
+}

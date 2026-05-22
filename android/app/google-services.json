@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "397421928399",
+    "firebase_url": "https://safehome-web-default-rtdb.firebaseio.com",
+    "project_id": "safehome-web",
+    "storage_bucket": "safehome-web.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397421928399:android:59ec255e0b0fa7a8bc7cba",
+        "android_client_info": {
+          "package_name": "com.example.safehome_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYgH3cdD2Q-8vZGwDUy3Q-p4pPPRZEeS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397421928399:android:6ffbebbcfe10f7f6bc7cba",
+        "android_client_info": {
+          "package_name": "com.example.safehomev1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYgH3cdD2Q-8vZGwDUy3Q-p4pPPRZEeS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,4 @@
+import 'notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -5,17 +6,22 @@ import 'ilac_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyCx6quwMWto0AKl-UGLrQZDGNAEz_25tkY",
+        appId: "1:397421928399:web:c8a341f535f1a5c6bc7cba",
+        messagingSenderId: "397421928399",
+        projectId: "safehome-web",
+        databaseURL: "https://safehome-web-default-rtdb.firebaseio.com",
+      ),
+    );
+  } on FirebaseException catch (e) {
+    if (e.code != 'duplicate-app') rethrow;
+  }
   await NotificationService.initializeNotifications();
+  await NotificationService.requestPermissionsAndSetupFCM();
   await NotificationService.initializeBackgroundService();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyCx6quwMWto0AKl-UGLrQZDGNAEz_25tkY",
-      appId: "1:397421928399:web:c8a341f535f1a5c6bc7cba",
-      messagingSenderId: "397421928399",
-      projectId: "safehome-web",
-      databaseURL: "https://safehome-web-default-rtdb.firebaseio.com", 
-    ),
-  );
   runApp(const SafeHomeApp());
 }
 
