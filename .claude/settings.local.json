@@ -8,7 +8,10 @@
       "Bash(find C:/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/ -maxdepth 1 -name \"awesome_notifications*\" -type d 2>/dev/null | sort)",
       "Read(//c/Users/fatih/AppData/Local/Pub/Cache/hosted/pub.dev/**)",
       "Bash(adb devices *)",
-      "PowerShell($adb = \"$env:LOCALAPPDATA\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; & $adb devices)"
+      "PowerShell($adb = \"$env:LOCALAPPDATA\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; & $adb devices)",
+      "PowerShell(& \"C:\\\\flutter\\\\bin\\\\flutter.bat\" analyze lib/ 2>&1)",
+      "PowerShell(\\(Get-Content \"c:\\\\safehome_app\\\\lib\\\\screens\\\\home_screen.dart\" -Raw\\) -replace '\\\\.withOpacity\\\\\\(\\([^\\)]+\\)\\\\\\)', '.withValues\\(alpha: $1\\)' | Set-Content \"c:\\\\safehome_app\\\\lib\\\\screens\\\\home_screen.dart\" -Encoding utf8)",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\safehome_app\\\\lib\\\\screens\\\\tabs\")"
     ]
   }
 }

@@ -130,18 +130,25 @@ void onStart(ServiceInstance service) async {
   });
 
   // Listener 2: İlaç hatırlatması
-  db.ref('ilacUyarisi').onValue.listen((event) {
-    if (event.snapshot.value == true) {
+  db.ref('ilaclar').onValue.listen((event) {
+    final data = event.snapshot.value;
+    if (data is! Map) return;
+
+    data.forEach((key, value) {
+      if (value is! Map) return;
+      if (value['saatiGeldi'] != true) return;
+
+      final isim = value['isim']?.toString() ?? 'ilacınızı';
       AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 555,
           channelKey: 'acil_durum_kanali',
           title: '⏰ SafeHome: İlaç Vakti!',
-          body: 'Yakınınızın ilaç alma vakti geldi.',
+          body: 'Vakit geldi! Lütfen $isim ilacını almayı unutmayın.',
           notificationLayout: NotificationLayout.BigText,
         ),
       );
-    }
+    });
   });
 }
 
