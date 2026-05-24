@@ -471,7 +471,7 @@ class _BatteryCard extends StatelessWidget {
                         Text(
                           '$level',
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF1A2340),
                             height: 1,

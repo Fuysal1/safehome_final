@@ -29,18 +29,12 @@ class _MedicationsTabState extends State<MedicationsTab> {
   }
 
   Future<void> _addIlac() async {
-    if (_isimController.text.trim().isEmpty ||
-        _saatController.text.trim().isEmpty) {
-      return;
-    }
     final ref = _ilaclarRef.push();
     await ref.set({
       'id': ref.key,
       'isim': _isimController.text.trim(),
       'saat': _saatController.text.trim(),
-      'doz': _dozController.text.trim().isEmpty
-          ? '1 Adet'
-          : _dozController.text.trim(),
+      'doz': _dozController.text.trim(),
       'alindiMi': false,
     });
     _isimController.clear();
@@ -58,6 +52,21 @@ class _MedicationsTabState extends State<MedicationsTab> {
         saatController: _saatController,
         dozController: _dozController,
         onAdd: () {
+          if (_isimController.text.trim().isEmpty ||
+              _saatController.text.trim().isEmpty ||
+              _dozController.text.trim().isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text('Lütfen tüm alanları doldurun!'),
+                backgroundColor: const Color(0xFFDC143C),
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              ),
+            );
+            return;
+          }
           _addIlac();
           Navigator.pop(context);
         },
@@ -548,6 +557,17 @@ class _AddMedicationSheet extends StatelessWidget {
             controller: saatController,
             hint: 'Saat (ör: 14:00)',
             icon: Icons.schedule_rounded,
+            readOnly: true,
+            onTap: () async {
+              final time = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
+              if (time != null) {
+                saatController.text =
+                    '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+              }
+            },
           ),
           const SizedBox(height: 12),
           _SheetField(
@@ -573,17 +593,23 @@ class _SheetField extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final IconData icon;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   const _SheetField({
     required this.controller,
     required this.hint,
     required this.icon,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      readOnly: readOnly,
+      onTap: onTap,
       decoration: InputDecoration(
         hintText: hint,
         hintStyle:
